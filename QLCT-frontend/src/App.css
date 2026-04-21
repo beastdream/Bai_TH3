@@ -1,0 +1,583 @@
+/* --- BIẾN MÀU SẮC CHỦ ĐẠO --- */
+:root {
+  --primary: #4361ee;
+  --success: #2ecc71;
+  --danger: #e74c3c;
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  --transition: all 0.3s ease; /* BỔ SUNG DÒNG NÀY ĐỂ HẾT LỖI */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: #2d3436;
+}
+
+/* --- DASHBOARD CONTAINER --- */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 25px 35px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.dashboard-header h2 {
+  font-size: 24px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* --- SUMMARY CARDS --- */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover { transform: translateY(-5px); }
+
+.card h3 {
+  font-size: 13px;
+  color: #636e72;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.card h2 { font-size: 32px; font-weight: 800; }
+.balance h2 { color: var(--primary); }
+.income h2 { color: var(--success); }
+.expense h2 { color: var(--danger); }
+
+/* Thêm vạch màu trang trí */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 5px; height: 100%;
+}
+.balance::before { background: var(--primary); }
+.income::before { background: var(--success); }
+.expense::before { background: var(--danger); }
+
+/* --- MAIN CONTENT LAYOUT --- */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .main-content { grid-template-columns: 1fr; }
+}
+
+.form-section, .table-section {
+  background: white;
+  padding: 30px;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+}
+
+.section-title {
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+
+/* --- TRANSACTION FORM --- */
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.transaction-form input, .transaction-form select {
+  padding: 14px 18px;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.2s;
+}
+
+.transaction-form input:focus, .transaction-form select:focus {
+  border-color: var(--primary);
+  outline: none;
+  background: #f8faff;
+}
+
+.btn-submit {
+  background: var(--primary);
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+}
+
+.btn-submit:hover {
+  background: #3451d1;
+  transform: scale(1.02);
+}
+
+/* --- TRANSACTION TABLE --- */
+.transaction-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.transaction-table th {
+  padding: 15px;
+  text-align: left;
+  color: #b2bec3;
+  font-weight: 500;
+  border-bottom: 2px solid #f1f2f6;
+}
+
+.transaction-table td {
+  padding: 18px 15px;
+  background: #fff;
+  border-top: 1px solid #f1f2f6;
+  border-bottom: 1px solid #f1f2f6;
+}
+
+.transaction-table tr td:first-child { border-left: 1px solid #f1f2f6; border-radius: 12px 0 0 12px; }
+.transaction-table tr td:last-child { border-right: 1px solid #f1f2f6; border-radius: 0 12px 12px 0; }
+
+.text-green { color: var(--success); font-weight: 700; }
+.text-red { color: var(--danger); font-weight: 700; }
+
+/* --- LOGOUT BUTTON --- */
+.btn-logout-style {
+  background: #fff;
+  color: var(--danger);
+  border: 2px solid #ffeaea;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-logout-style:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* --- TRANG ĐĂNG NHẬP (LOGIN & REGISTER) --- */
+.login-container, .register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--bg-gradient);
+  padding: 20px;
+}
+
+.login-box, .register-box {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 45px;
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.login-box h1, .register-box h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.login-box p {
+  color: #636e72;
+  margin-bottom: 30px;
+}
+
+/* Input trong trang Login */
+.login-box input, .register-box input {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.login-box input:focus {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+}
+
+/* Nút bấm trang Login */
+.btn-login-phone {
+  width: 100%;
+  padding: 15px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-google {
+  width: 100%;
+  padding: 15px;
+  background: white;
+  color: #2d3436;
+  border: 2px solid #edf2f7;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-google:hover {
+  background: #f8f9fa;
+  border-color: #d1d8e0;
+}
+
+/* --- TRANG ADMIN DASHBOARD --- */
+.admin-header {
+  background: linear-gradient(135deg, #2c3e50, #000000);
+  color: white !important;
+}
+
+.admin-header h1 {
+  color: #ff7675; /* Màu đỏ nhạt cho chữ ADMIN */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.admin-stat-card {
+  background: white;
+  border-top: 5px solid #ff7675;
+}
+
+/* Bảng dữ liệu Admin */
+.admin-table-container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  margin-top: 30px;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th {
+  background: #f8f9fa;
+  padding: 18px;
+  text-align: left;
+  font-weight: 700;
+  color: #2d3436;
+  border-bottom: 3px solid #eee;
+}
+
+.admin-table td {
+  padding: 18px;
+  border-bottom: 1px solid #f1f2f6;
+  font-size: 15px;
+}
+
+.admin-table tr:hover {
+  background-color: #fff9f9;
+}
+
+/* Badge phân loại User trong Admin */
+.user-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eee;
+}
+/* Thêm cho Mobile để giao diện không bị nát */
+@media (max-width: 768px) {
+  .summary-cards {
+    grid-template-columns: 1fr; /* Xếp chồng các thẻ Card khi màn hình nhỏ */
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+
+  .login-box, .register-box {
+    padding: 25px; /* Giảm padding để rộng chỗ hơn trên điện thoại */
+  }
+}
+/* --- LAYOUT BIỂU ĐỒ --- */
+.charts-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Cột to cho BarChart, cột nhỏ cho PieChart */
+  gap: 25px;
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.chart-card {
+  background: white;
+  padding: 25px;
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.chart-container {
+  margin-top: 15px;
+}
+
+/* Responsive cho máy tính bảng/điện thoại */
+@media (max-width: 992px) {
+  .charts-layout {
+    grid-template-columns: 1fr;
+  }
+}
+/* --- CSS CHO PHẦN BIẾN ĐỘNG 6 THÁNG --- */
+.recent-stats-container {
+  margin-bottom: 35px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.recent-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+.stat-mini-card {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.02);
+  transition: var(--transition);
+}
+
+.stat-mini-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.stat-month {
+  font-weight: 800;
+  font-size: 14px;
+  color: #2d3436;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 12px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.stat-bar-bg {
+  height: 6px;
+  background: var(--danger); /* Màu đỏ làm nền cho chi tiêu */
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background: var(--success); /* Màu xanh đè lên thể hiện tỷ lệ thu nhập */
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Phần info cho Pie Chart */
+.pie-info {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.pie-income-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #636e72;
+}
+
+/* =========================================
+   --- BỔ SUNG CHI TIẾT BIẾN ĐỘNG 6 THÁNG ---
+   ========================================= */
+
+/* Ô chứa giá trị và Badge % */
+.stat-value-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+
+/* Badge % nhỏ gọn giống trong ảnh mẫu */
+.change-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Màu nền nhạt cho Badge (Light background) */
+.bg-green-light {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+}
+
+.bg-red-light {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #c0392b;
+}
+
+/* Kiểu chữ cho phần 0% */
+.change-none {
+  font-size: 11px;
+  color: #b2bec3;
+  font-weight: 500;
+}
+
+/* =========================================
+   --- LÀM ĐẸP LỊCH SỬ GIAO DỊCH (DẠNG CARD) ---
+   ========================================= */
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+/* Card riêng cho từng dòng giao dịch */
+.history-item-card {
+  background: white;
+  padding: 18px 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 1px solid #f1f3f5;
+}
+
+.history-item-card:hover {
+  transform: translateX(8px);
+  border-color: var(--primary);
+  box-shadow: 0 8px 15px rgba(67, 97, 238, 0.08);
+}
+
+/* Icon Category bên trái */
+.item-icon-box {
+  width: 45px;
+  height: 45px;
+  background: #f8faff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--primary);
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-date {
+  font-size: 12px;
+  color: #b2bec3;
+  margin-bottom: 2px;
+}
+
+.item-description {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d3436;
+}
+
+.item-amount {
+  font-size: 16px;
+  font-weight: 700;
+  min-width: 100px;
+  text-align: right;
+}
+
+/* =========================================
+   --- HIỆU ỨNG ĐỔ BÓNG CHO BIỂU ĐỒ ---
+   ========================================= */
+
+.chart-card {
+  transition: transform 0.3s ease;
+}
+
+.chart-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Tùy chỉnh Legend của Recharts */
+.recharts-default-legend {
+  margin-top: 15px !important;
+  font-size: 13px;
+}

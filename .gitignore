@@ -1,0 +1,10 @@
+# Front-end
+node_modules/
+dist/
+.env.local
+
+# Back-end
+bin/
+obj/
+appsettings.Development.json
+.vs/
