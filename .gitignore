@@ -1,10 +1,13 @@
-# Front-end
-node_modules/
-dist/
-.env.local
-
-# Back-end
+# .NET
 bin/
 obj/
+*.user
 appsettings.Development.json
-.vs/
+
+# Node (Frontend)
+node_modules/
+dist/
+.env
+
+# VS Code
+.vscode/

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using QLCT_BACKEND.Models; // Đảm bảo namespace này khớp với thư mục Models của bạn
+using QLCT_Backend.Models; // Đảm bảo namespace này khớp với thư mục Models của bạn
 
-namespace QLCT_BACKEND.Data 
+namespace QLCT_Backend.Data 
 {
     public class AppDbContext : DbContext
     {

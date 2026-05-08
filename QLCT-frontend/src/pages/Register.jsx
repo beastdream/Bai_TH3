@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { register } from '../api/api';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -9,7 +9,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:8080/api/public/register', formData);
+            await register(formData);
             alert("Đăng ký thành công! Hãy đăng nhập để bắt đầu.");
             navigate('/login');
         } catch (err) {

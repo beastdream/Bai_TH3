@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using QLCT_BACKEND.Data;
-using QLCT_BACKEND.Models;
+using QLCT_Backend.Data;
+using QLCT_Backend.Models;
 
-namespace QLCT_BACKEND.Controllers
+namespace QLCT_Backend.Controllers
 {
     [Route("api/public")]
     [ApiController]
